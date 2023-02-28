@@ -93,7 +93,7 @@ function updateBoard(letter)
                     if(wordArr.indexOf(item) == guessArr.indexOf(item))
                     {
                         document.getElementById(thisInd).style.backgroundColor = "green";
-                        wordArr[word]
+                        //wordArr[word]
 
                     }
             

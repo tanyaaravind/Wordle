@@ -85,22 +85,26 @@ function updateBoard(letter)
         else{
             let guessArr = guess.split("")
             let wordArr = guessWord[0].split("")
-            guessArr.forEach(check)
-            function check(item)
+            guessArr.forEach(checkGreen)
+            function checkGreen(item)
             {
                 var thisInd = "" + row + col;
                 if(wordArr.includes(item))
                 {
-                    if(wordArr.indexOf(item) == guessArr.indexOf(item))
+                    if(wordArr[col] == guessArr[col])
                     {
                         document.getElementById(thisInd).style.backgroundColor = "green";
-                        //wordArr[col] = "0"
+                        wordArr[col] = "0"
+                        console.log(wordArr + " 1")
 
                     }
                     
                 }
                 col++;
             }
+
+            console.log(wordArr + " 2")
+            
         }
     }
 }

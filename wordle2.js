@@ -77,37 +77,62 @@ function updateBoard(letter)
             document.getElementById(currIndex).style.borderColor =  "white";
     }
 
-    function checkGuess(guess, row) {
+    function checkGuess(guess, row) 
+    {
+        var thisInd;
+        var guessArr = guess.split("")
+        var wordArr = guessWord[0].split("")
+        
         let col = 0;
         if(guess === guessWord[0]){
-            console.log("Yayy!")
+            guessArr.forEach(winning)
+            function winning(item)
+            {
+                thisInd = "" + row + col;
+                document.getElementById(thisInd).style.backgroundColor = "DarkGreen";
+            }
+            
         }
-        else{
-            let guessArr = guess.split("")
-            let wordArr = guessWord[0].split("")
+        else
+        {
             guessArr.forEach(checkGreen)
             function checkGreen(item)
             {
-                var thisInd = "" + row + col;
+                thisInd = "" + row + col;
                 if(wordArr.includes(item))
                 {
                     if(wordArr[col] == guessArr[col])
                     {
-                        document.getElementById(thisInd).style.backgroundColor = "green";
+                        document.getElementById(thisInd).style.backgroundColor = "DarkGreen";
                         wordArr[col] = "0"
-                        console.log(wordArr + " 1")
 
                     }
                     
                 }
                 col++;
+                
             }
 
-            console.log(wordArr + " 2")
-            
+            col = 0;
+            guessArr.forEach(checkYellow)
+            function checkYellow(item)
+            {
+                thisInd = "" + row + col;
+                if(wordArr.includes(item))
+                {
+                    document.getElementById(thisInd).style.backgroundColor = "GoldenRod";
+                    wordArr[wordArr.indexOf(item)] = "0"
+
+                }
+                
+                col++;
+            }
+                
         }
+            
     }
 }
+
 
 
 

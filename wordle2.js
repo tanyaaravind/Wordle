@@ -1,5 +1,5 @@
 let guessWord
-
+/*
 fetch('https://random-word-api.herokuapp.com/word?length=5')
     .then(response => {
         return response.json();
@@ -8,6 +8,9 @@ fetch('https://random-word-api.herokuapp.com/word?length=5')
         guessWord = data;
         console.log(guessWord)
     });
+*/
+
+guessWord = ["tanya"]
 
 const squares = document.querySelectorAll('.square');
 
@@ -93,10 +96,9 @@ function updateBoard(letter)
                     if(wordArr.indexOf(item) == guessArr.indexOf(item))
                     {
                         document.getElementById(thisInd).style.backgroundColor = "green";
-                        //wordArr[word]
+                        wordArr[col] = "0"
 
                     }
-            
                     
                 }
                 col++;

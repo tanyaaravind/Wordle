@@ -1,5 +1,6 @@
 let guessWord
 
+
 fetch('https://random-word-api.herokuapp.com/word?length=5')
     .then(response => {
         return response.json();
@@ -9,6 +10,8 @@ fetch('https://random-word-api.herokuapp.com/word?length=5')
         console.log(guessWord)
     });
 
+
+//guessWord = ["fritt"];
 
 const squares = document.querySelectorAll('.square');
 
@@ -29,12 +32,15 @@ let col = 0
 
 let currGuess = ""
 
-document.addEventListener('keydown', (event) => { 
-    key = event.key;
+
+document.addEventListener('keydown', handleGame)
+
+function handleGame(event)
+{
+    let key = event.key;
     updateBoard(key)
 
-   
-})
+}
 
 function updateBoard(letter) 
 {
@@ -90,6 +96,7 @@ function updateBoard(letter)
                 thisInd = "" + row + i
                 document.getElementById(thisInd).style.backgroundColor = "DarkGreen";
             }
+            endGame()
             
         }
         else
@@ -104,6 +111,7 @@ function updateBoard(letter)
                     {
                         document.getElementById(thisInd).style.backgroundColor = "DarkGreen";
                         wordArr[col] = "0"
+                        guessArr[col] = "1"
 
                     }
                     

@@ -85,10 +85,9 @@ function updateBoard(letter)
         
         let col = 0;
         if(guess === guessWord[0]){
-            guessArr.forEach(winning)
-            function winning(item)
+            for(var i = 0; i <= 4; i++)
             {
-                thisInd = "" + row + col;
+                thisInd = "" + row + i
                 document.getElementById(thisInd).style.backgroundColor = "DarkGreen";
             }
             

@@ -142,5 +142,8 @@ function updateBoard(letter)
 
 
 
+function endGame()
+{
+    document.removeEventListener('keydown', handleGame)
 
-
+}

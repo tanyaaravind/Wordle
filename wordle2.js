@@ -1,17 +1,43 @@
-let guessWord
 
+var guessWord
 
-fetch('https://random-word-api.herokuapp.com/word?length=5')
+function getWord ()
+{
+    fetch('https://random-word-api.herokuapp.com/word?length=5')
     .then(response => {
         return response.json();
     })
     .then(data => {
         guessWord = data;
         console.log(guessWord)
+        wordExists(guessWord)
     });
 
 
-//guessWord = ["fritt"];
+    function wordExists(word)
+    {
+
+        fetch('https://api.dictionaryapi.dev/api/v2/entries/en/' + word[0])
+        .then((res) => {
+            if(res.ok)
+            {
+                guessWord = word
+            }
+            else throw new Error(res.status)
+        })
+        .catch((error) => {
+            console.log("works!")
+            getWord()
+
+        })
+    }
+}
+
+
+
+
+getWord()
+
 
 const squares = document.querySelectorAll('.square');
 
@@ -59,10 +85,27 @@ function updateBoard(letter)
         function addTo(item){
             currGuess += item;
         }
-        checkGuess(currGuess, row);
-        row++;
-        col = 0;
-        return;
+
+        currGuess = currGuess.slice(0, 5)
+
+        fetch('https://api.dictionaryapi.dev/api/v2/entries/en/' + currGuess)
+        .then((res) => {
+            if(res.ok)
+            {
+                console.log("works?")
+                checkGuess(currGuess, row);
+                row++;
+                col = 0;
+                return;
+            }
+            else throw new Error(res.status)
+        })
+        .catch((error) => {
+            console.log("works2! + Invalid Word")
+      
+        })
+
+        
     }
     
     else{

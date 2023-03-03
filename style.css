@@ -27,7 +27,6 @@ body{
 
 .board-container
 {
-    background-color:#2f2f2f;
     display: inline-grid;
     grid-template-columns: 65px 65px 65px 65px 65px;
     grid-template-rows: 65px 65px 65px 65px 65px 65px;
@@ -42,7 +41,6 @@ body{
     text-transform: uppercase;
     font-weight: 800;
     font-size: 27px;
-    background-color: #2f2f2f;
     text-align: center;
     line-height: 57px;
     border: 2px solid rgb(116, 116, 116);

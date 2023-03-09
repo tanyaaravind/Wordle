@@ -47,7 +47,7 @@ body{
 }
 
 
-.square-bounce
+.square-pop
 {
     animation-name: pop;
     animation-duration: 150ms;
@@ -59,11 +59,12 @@ body{
         transform: scale(1, 1);
     }
     50% {
-        transform: scale(1.1, 1.1);
+        transform: scale(1.07, 1.07);
     }
     100%{
         transform: scale(1, 1);
     }
       
 }
+
 

@@ -1,6 +1,7 @@
 
 var guessWord
-/*
+
+
 function getWord ()
 {
     fetch('https://random-word-api.herokuapp.com/word?length=5')
@@ -38,10 +39,6 @@ function getWord ()
 
 getWord()
 
-*/
-
-guessWord = ["fuggy"]
-console.log(guessWord)
 
 const squares = document.querySelectorAll('.square');
 
@@ -61,7 +58,9 @@ let row = 0
 let col = 0
 
 let currGuess = ""
-let currIndex
+
+let currIndex;
+
 
 document.addEventListener('keydown', handleGame)
 
@@ -114,10 +113,9 @@ function updateBoard(letter)
     
     else{
         if(alphabet.includes(letter)){
-            currIndex = "" + row + col;
             board[row][col] = letter;
-            document.getElementById(currIndex).classList.add('square-bounce');
-            document.getElement
+            currIndex = "" + row + col;
+
             updateBoardUtil(false);   
             col++;
         }
@@ -128,9 +126,16 @@ function updateBoard(letter)
         currIndex = "" + row + col;
         document.getElementById(currIndex).innerHTML = board[row][col];
         if(isBack)
+        {
             document.getElementById(currIndex).style.borderColor = "gray";
+            animatePop(currIndex, false)
+        }
         else
+        {
             document.getElementById(currIndex).style.borderColor =  "white";
+            animatePop(currIndex, true);
+        }
+            
     }
 
     function checkGuess(guess, row) 
@@ -153,26 +158,19 @@ function updateBoard(letter)
             guessArr.forEach(checkGreen)
             function checkGreen(item)
             {
-                console.log("yes1")
                 currIndex = "" + row + col;
-                console.log("currIndex " + currIndex)
                 if(wordArr.includes(item))
                 {
-                    console.log("yes2")
                     if(wordArr[col] == guessArr[col])
                     {
-                        console.log("yes3")
                         document.getElementById(currIndex).style.backgroundColor = "DarkGreen";
                         wordArr[col] = "0"
-                        console.log(wordArr + " wr")
                         guessArr[col] = "1"
-                        console.log(guessArr + " gr")
 
                     }
-                    console.log("yes4")
+                    
                 }
                 col++;
-                console.log("yes5")
                 
             }
 
@@ -186,10 +184,6 @@ function updateBoard(letter)
                     document.getElementById(currIndex).style.backgroundColor = "GoldenRod";
                     wordArr[wordArr.indexOf(item)] = "0"
 
-                }
-                else
-                {
-                    document.getElementById(currIndex).style.backgroundColor = "DimGray";
                 }
                 
                 col++;
@@ -206,4 +200,12 @@ function endGame()
 {
     document.removeEventListener('keydown', handleGame)
 
+}
+
+function animatePop(ind, isAdd)
+{
+    if(isAdd)
+        document.getElementById(ind).classList.add("square-pop")
+    else
+        document.getElementById(ind).classList.remove("square-pop")
 }

@@ -46,3 +46,24 @@ body{
     border: 2px solid rgb(116, 116, 116);
 }
 
+
+.square-bounce
+{
+    animation-name: pop;
+    animation-duration: 150ms;
+}
+
+@keyframes pop
+{
+    0% {
+        transform: scale(1, 1);
+    }
+    50% {
+        transform: scale(1.1, 1.1);
+    }
+    100%{
+        transform: scale(1, 1);
+    }
+      
+}
+

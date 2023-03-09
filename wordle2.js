@@ -1,6 +1,6 @@
 
 var guessWord
-
+/*
 function getWord ()
 {
     fetch('https://random-word-api.herokuapp.com/word?length=5')
@@ -38,6 +38,10 @@ function getWord ()
 
 getWord()
 
+*/
+
+guessWord = ["fuggy"]
+console.log(guessWord)
 
 const squares = document.querySelectorAll('.square');
 
@@ -57,7 +61,7 @@ let row = 0
 let col = 0
 
 let currGuess = ""
-
+let currIndex
 
 document.addEventListener('keydown', handleGame)
 
@@ -110,7 +114,10 @@ function updateBoard(letter)
     
     else{
         if(alphabet.includes(letter)){
+            currIndex = "" + row + col;
             board[row][col] = letter;
+            document.getElementById(currIndex).classList.add('square-bounce');
+            document.getElement
             updateBoardUtil(false);   
             col++;
         }
@@ -118,7 +125,7 @@ function updateBoard(letter)
     }
 
     function updateBoardUtil(isBack) {
-        let currIndex = "" + row + col;
+        currIndex = "" + row + col;
         document.getElementById(currIndex).innerHTML = board[row][col];
         if(isBack)
             document.getElementById(currIndex).style.borderColor = "gray";
@@ -128,7 +135,6 @@ function updateBoard(letter)
 
     function checkGuess(guess, row) 
     {
-        var thisInd;
         var guessArr = guess.split("")
         var wordArr = guessWord[0].split("")
         
@@ -136,8 +142,8 @@ function updateBoard(letter)
         if(guess === guessWord[0]){
             for(var i = 0; i <= 4; i++)
             {
-                thisInd = "" + row + i
-                document.getElementById(thisInd).style.backgroundColor = "DarkGreen";
+                currIndex = "" + row + i
+                document.getElementById(currIndex).style.backgroundColor = "DarkGreen";
             }
             endGame()
             
@@ -147,19 +153,26 @@ function updateBoard(letter)
             guessArr.forEach(checkGreen)
             function checkGreen(item)
             {
-                thisInd = "" + row + col;
+                console.log("yes1")
+                currIndex = "" + row + col;
+                console.log("currIndex " + currIndex)
                 if(wordArr.includes(item))
                 {
+                    console.log("yes2")
                     if(wordArr[col] == guessArr[col])
                     {
-                        document.getElementById(thisInd).style.backgroundColor = "DarkGreen";
+                        console.log("yes3")
+                        document.getElementById(currIndex).style.backgroundColor = "DarkGreen";
                         wordArr[col] = "0"
+                        console.log(wordArr + " wr")
                         guessArr[col] = "1"
+                        console.log(guessArr + " gr")
 
                     }
-                    
+                    console.log("yes4")
                 }
                 col++;
+                console.log("yes5")
                 
             }
 
@@ -167,12 +180,16 @@ function updateBoard(letter)
             guessArr.forEach(checkYellow)
             function checkYellow(item)
             {
-                thisInd = "" + row + col;
+                currIndex = "" + row + col;
                 if(wordArr.includes(item))
                 {
-                    document.getElementById(thisInd).style.backgroundColor = "GoldenRod";
+                    document.getElementById(currIndex).style.backgroundColor = "GoldenRod";
                     wordArr[wordArr.indexOf(item)] = "0"
 
+                }
+                else
+                {
+                    document.getElementById(currIndex).style.backgroundColor = "DimGray";
                 }
                 
                 col++;

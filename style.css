@@ -28,11 +28,64 @@ body{
 .board-container
 {
     display: inline-grid;
-    grid-template-columns: 65px 65px 65px 65px 65px;
     grid-template-rows: 65px 65px 65px 65px 65px 65px;
     grid-gap: 5px;
     padding: 20px;
 
+}
+
+.row0
+{
+    display: inline-grid;
+    grid-template-columns: 65px 65px 65px 65px 65px;
+    grid-template-rows: 65px 65px 65px 65px 65px 65px;
+    grid-gap: 5px;
+    padding: 20px;
+}
+
+.row1
+{
+    display: inline-grid;
+    grid-template-columns: 65px 65px 65px 65px 65px;
+    grid-template-rows: 65px 65px 65px 65px 65px 65px;
+    grid-gap: 5px;
+    padding: 20px;
+}
+
+.row2
+{
+    display: inline-grid;
+    grid-template-columns: 65px 65px 65px 65px 65px;
+    grid-template-rows: 65px 65px 65px 65px 65px 65px;
+    grid-gap: 5px;
+    padding: 20px;
+}
+
+.row3
+{
+    display: inline-grid;
+    grid-template-columns: 65px 65px 65px 65px 65px;
+    grid-template-rows: 65px 65px 65px 65px 65px 65px;
+    grid-gap: 5px;
+    padding: 20px;
+}
+
+.row4
+{
+    display: inline-grid;
+    grid-template-columns: 65px 65px 65px 65px 65px;
+    grid-template-rows: 65px 65px 65px 65px 65px 65px;
+    grid-gap: 5px;
+    padding: 20px;
+}
+
+.row5
+{
+    display: inline-grid;
+    grid-template-columns: 65px 65px 65px 65px 65px;
+    grid-template-rows: 65px 65px 65px 65px 65px 65px;
+    grid-gap: 5px;
+    padding: 20px;
 }
 
 .square
@@ -61,10 +114,29 @@ body{
     50% {
         transform: scale(1.07, 1.07);
     }
-    100%{
-        transform: scale(1, 1);
-    }
       
 }
+
+.row-shake
+{
+    animation-name: shake;
+    animation-duration: 150ms;
+    animation-iteration-count: 3;
+}
+
+@keyframes shake
+{
+    0% {
+        transform: translate(0px);
+    }
+    20% {
+        transform: translate(3px);
+    }
+    75% {
+        transform: translate(-6px);
+    }
+
+}
+
 
 

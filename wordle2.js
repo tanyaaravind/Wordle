@@ -83,6 +83,7 @@ function updateBoard(letter)
     }
 
     else if(letter === "Enter" && col > 4){
+        document.getElementById("" + row).classList.remove("row-shake")
         currGuess = ""
         board[row].forEach(addTo)
         function addTo(item){
@@ -105,6 +106,7 @@ function updateBoard(letter)
         })
         .catch((error) => {
             console.log("works2! + Invalid Word")
+            document.getElementById("" + row).classList.add("row-shake")
       
         })
 
@@ -184,6 +186,10 @@ function updateBoard(letter)
                     document.getElementById(currIndex).style.backgroundColor = "GoldenRod";
                     wordArr[wordArr.indexOf(item)] = "0"
 
+                }
+                else
+                {
+                    document.getElementById(currIndex).style.backgroundColor = "Gray";
                 }
                 
                 col++;

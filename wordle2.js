@@ -151,6 +151,8 @@ function updateBoard(letter)
             {
                 currIndex = "" + row + i
                 document.getElementById(currIndex).style.backgroundColor = "DarkGreen";
+                document.getElementById(currIndex).classList.add("winning-bounce");
+
             }
             endGame()
             
@@ -189,7 +191,7 @@ function updateBoard(letter)
                 }
                 else if(item !== "1")
                 {
-                    document.getElementById(currIndex).style.backgroundColor = "Gray";
+                    document.getElementById(currIndex).style.backgroundColor = "DimGray";
                 }
                 
                 col++;

@@ -138,5 +138,28 @@ body{
 
 }
 
+.winning-bounce 
+{
+    animation-name: bounce;
+    animation-duration: 1.5s;
+}
+
+@keyframes bounce
+{
+    25% {
+        transform: translate(0px, -20px)
+    }
+    75% {
+        transform: translate(0px, 10px)
+    }
+}
+
+.winning-bounce:nth-child(1) { animation-delay: .1s }
+.winning-bounce:nth-child(2) { animation-delay: .2s }
+.winning-bounce:nth-child(3) { animation-delay: .3s }
+.winning-bounce:nth-child(4) { animation-delay: .4s }
+.winning-bounce:nth-child(5) { animation-delay: .5s }
+
+
 
 

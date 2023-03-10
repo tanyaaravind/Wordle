@@ -187,7 +187,7 @@ function updateBoard(letter)
                     wordArr[wordArr.indexOf(item)] = "0"
 
                 }
-                else
+                else if(item !== "1")
                 {
                     document.getElementById(currIndex).style.backgroundColor = "Gray";
                 }

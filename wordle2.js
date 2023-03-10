@@ -140,10 +140,13 @@ function updateBoard(letter)
             
     }
 
+    var colors = [];
+
     function checkGuess(guess, row) 
     {
         var guessArr = guess.split("")
         var wordArr = guessWord[0].split("")
+
         
         let col = 0;
         if(guess === guessWord[0]){
@@ -189,14 +192,17 @@ function updateBoard(letter)
                     wordArr[wordArr.indexOf(item)] = "0"
 
                 }
-                else if(item !== "1")
-                {
-                    document.getElementById(currIndex).style.backgroundColor = "DimGray";
-                }
                 
                 col++;
             }
                 
+        }
+
+
+        for(var i = 0; i <= 4; i++)
+        {
+            currIndex = "" + row + i
+            document.getElementById(currIndex).classList.add("tile-flip")
         }
             
     }

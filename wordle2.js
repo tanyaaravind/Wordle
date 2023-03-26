@@ -1,13 +1,13 @@
 
 var guessWord
 
-
 function getWord ()
 {
     fetch('https://random-word-api.herokuapp.com/word?length=5')
     .then(response => {
         return response.json();
     })
+
     .then(data => {
         guessWord = data;
         console.log(guessWord)
@@ -61,6 +61,13 @@ let currGuess = ""
 
 let currIndex;
 
+const colorArr =
+[['', '', '', '', ''],
+['', '', '', '', ''],
+['', '', '', '', ''],
+['', '', '', '', ''],
+['', '', '', '', ''],
+['', '', '', '', '']];
 
 document.addEventListener('keydown', handleGame)
 
@@ -140,10 +147,9 @@ function updateBoard(letter)
             
     }
 
-    var colors = [];
-
     function checkGuess(guess, row) 
     {
+        //console.log(colorArr)
         var guessArr = guess.split("")
         var wordArr = guessWord[0].split("")
 
@@ -153,7 +159,8 @@ function updateBoard(letter)
             for(var i = 0; i <= 4; i++)
             {
                 currIndex = "" + row + i
-                document.getElementById(currIndex).style.backgroundColor = "DarkGreen";
+                // document.getElementById(currIndex).style.backgroundColor = "DarkGreen";
+                colorArr[row][i] = "gr"
                 document.getElementById(currIndex).classList.add("winning-bounce");
 
             }
@@ -170,12 +177,12 @@ function updateBoard(letter)
                 {
                     if(wordArr[col] == guessArr[col])
                     {
-                        document.getElementById(currIndex).style.backgroundColor = "DarkGreen";
+                        // document.getElementById(currIndex).style.backgroundColor = "DarkGreen";
+                        colorArr[row][col] = "gr"
                         wordArr[col] = "0"
                         guessArr[col] = "1"
 
                     }
-                    
                 }
                 col++;
                 
@@ -188,23 +195,36 @@ function updateBoard(letter)
                 currIndex = "" + row + col;
                 if(wordArr.includes(item))
                 {
-                    document.getElementById(currIndex).style.backgroundColor = "GoldenRod";
+                    // document.getElementById(currIndex).style.backgroundColor = "GoldenRod";
+                    colorArr[row][col] = "ye"
                     wordArr[wordArr.indexOf(item)] = "0"
 
                 }
-                
                 col++;
             }
-                
         }
+        
 
-
-        for(var i = 0; i <= 4; i++)
+        for(let i = 0; i <= 4; i++)
         {
-            currIndex = "" + row + i
-            document.getElementById(currIndex).classList.add("tile-flip")
+            document.getElementById("" + row + i).classList.add("tile-flip")
+            delay(row, i);  
         }
-            
+        
+    }
+
+    function delay(drow, i) {
+        setTimeout(() => {
+            var item = colorArr[drow][i];
+            if (item === 'gr') {
+                currIndex = "" + drow + i;
+                document.getElementById(currIndex).style.backgroundColor = "DarkGreen";
+            }
+            else if (item === 'ye') {
+                currIndex = "" + drow + i;
+                document.getElementById(currIndex).style.backgroundColor = "GoldenRod";
+            }
+        }, 250 + 300 * i);
     }
 }
 
@@ -223,3 +243,20 @@ function animatePop(ind, isAdd)
     else
         document.getElementById(ind).classList.remove("square-pop")
 }
+
+
+
+/*
+function tileFlip()
+{
+    for(var i = 0; i <= 4; i++)
+    {
+        document.getElementById("" + row + i).classList.add("tile-flip")
+
+    }
+
+}
+
+*/
+
+//Need to use if else to decide colors based on the colorArr. :0 <3

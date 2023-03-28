@@ -5,6 +5,7 @@
 
 body{
     background-color: rgb(24, 24, 24);
+    overflow: hidden;
 
 }
 
@@ -16,12 +17,22 @@ body{
     align-items: center;
 }
 
+.nav-bar
+{
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid;
+    border-bottom-color:rgb(116, 116, 116);
+}
+
+
 .title-container
 {
+    display: inline;
     font-size: 20px;
     justify-content: center;
-    padding-bottom: 30px;
-    padding-top: 15px;
+    padding-bottom: 5px;
+    padding-top: 5px;
 
 }
 
@@ -29,17 +40,18 @@ body{
 {
     display: inline-grid;
     grid-template-rows: 65px 65px 65px 65px 65px 65px;
-    grid-gap: 5px;
-    padding: 20px;
+    grid-gap: 6px;
+    padding-top: 60px;
+    justify-content: center;
 
 }
 
-.row0, .fromt
+.row0
 {
     display: inline-grid;
     grid-template-columns: 65px 65px 65px 65px 65px;
     grid-template-rows: 65px 65px 65px 65px 65px 65px;
-    grid-gap: 5px;
+    grid-gap: 6px;
     padding: 20px;
     backface-visibility: hidden;
 }
@@ -49,7 +61,7 @@ body{
     display: inline-grid;
     grid-template-columns: 65px 65px 65px 65px 65px;
     grid-template-rows: 65px 65px 65px 65px 65px 65px;
-    grid-gap: 5px;
+    grid-gap: 6px;
     padding: 20px;
     backface-visibility: hidden;
 }
@@ -59,7 +71,7 @@ body{
     display: inline-grid;
     grid-template-columns: 65px 65px 65px 65px 65px;
     grid-template-rows: 65px 65px 65px 65px 65px 65px;
-    grid-gap: 5px;
+    grid-gap: 6px;
     padding: 20px;
     backface-visibility: hidden;
 }
@@ -69,7 +81,7 @@ body{
     display: inline-grid;
     grid-template-columns: 65px 65px 65px 65px 65px;
     grid-template-rows: 65px 65px 65px 65px 65px 65px;
-    grid-gap: 5px;
+    grid-gap: 6px;
     padding: 20px;
     backface-visibility: hidden;
 }
@@ -79,7 +91,7 @@ body{
     display: inline-grid;
     grid-template-columns: 65px 65px 65px 65px 65px;
     grid-template-rows: 65px 65px 65px 65px 65px 65px;
-    grid-gap: 5px;
+    grid-gap: 6px;
     padding: 20px;
     backface-visibility: hidden;
 }
@@ -89,7 +101,7 @@ body{
     display: inline-grid;
     grid-template-columns: 65px 65px 65px 65px 65px;
     grid-template-rows: 65px 65px 65px 65px 65px 65px;
-    grid-gap: 5px;
+    grid-gap: 6px;
     padding: 20px;
     backface-visibility: hidden;
 }

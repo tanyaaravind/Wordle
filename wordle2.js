@@ -27,7 +27,6 @@ function getWord ()
             else throw new Error(res.status)
         })
         .catch((error) => {
-            console.log("works!")
             getWord()
 
         })
@@ -80,7 +79,6 @@ function handleGame(event)
 
 function updateBoard(letter) 
 {
-    console.log(letter)
 
     if(letter === "Backspace" && col != 0){
         col-=1;
@@ -103,7 +101,6 @@ function updateBoard(letter)
         .then((res) => {
             if(res.ok)
             {
-                console.log("works?")
                 checkGuess(currGuess, row);
                 row++;
                 col = 0;
@@ -112,7 +109,6 @@ function updateBoard(letter)
             else throw new Error(res.status)
         })
         .catch((error) => {
-            console.log("works2! + Invalid Word")
             document.getElementById("" + row).classList.add("row-shake")
       
         })
@@ -141,7 +137,7 @@ function updateBoard(letter)
         }
         else
         {
-            document.getElementById(currIndex).style.borderColor =  "gainsboro";
+            document.getElementById(currIndex).style.borderColor =  "silver";
             animatePop(currIndex, true);
         }
             
@@ -149,7 +145,6 @@ function updateBoard(letter)
 
     function checkGuess(guess, row) 
     {
-        //console.log(colorArr)
         var guessArr = guess.split("")
         var wordArr = guessWord[0].split("")
 
@@ -219,10 +214,12 @@ function updateBoard(letter)
             if (item === 'gr') {
                 currIndex = "" + drow + i;
                 document.getElementById(currIndex).style.backgroundColor = "DarkGreen";
+                document.getElementById(currIndex).style.borderColor = "DarkGreen"
             }
             else if (item === 'ye') {
                 currIndex = "" + drow + i;
                 document.getElementById(currIndex).style.backgroundColor = "GoldenRod";
+                document.getElementById(currIndex).style.borderColor = "GoldenRod"
             }
         }, 250 + 300 * i);
     }
@@ -246,22 +243,6 @@ function animatePop(ind, isAdd)
         document.getElementById(ind).classList.remove("square-pop")
 }
 
-
-
-/*
-function tileFlip()
-{
-    for(var i = 0; i <= 4; i++)
-    {
-        document.getElementById("" + row + i).classList.add("tile-flip")
-
-    }
-
-}
-
-*/
-
-//Need to use if else to decide colors based on the colorArr. :0 <3
 
 
 function finalBounce(drow) {

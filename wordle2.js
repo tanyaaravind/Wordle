@@ -136,12 +136,12 @@ function updateBoard(letter)
         document.getElementById(currIndex).innerHTML = board[row][col];
         if(isBack)
         {
-            document.getElementById(currIndex).style.borderColor = "gray";
+            document.getElementById(currIndex).style.borderColor = "dimgray";
             animatePop(currIndex, false)
         }
         else
         {
-            document.getElementById(currIndex).style.borderColor =  "white";
+            document.getElementById(currIndex).style.borderColor =  "gainsboro";
             animatePop(currIndex, true);
         }
             
@@ -230,9 +230,11 @@ function updateBoard(letter)
 
 
 
+
 function endGame()
 {
     document.removeEventListener('keydown', handleGame)
+    finalBounce(row)
 
 }
 
@@ -260,3 +262,16 @@ function tileFlip()
 */
 
 //Need to use if else to decide colors based on the colorArr. :0 <3
+
+
+function finalBounce(drow) {
+    for(let i = 0; i <= 4; i++)
+    {
+
+        setTimeout(() => {
+            document.getElementById("" + drow + i).classList.remove("tile-flip")
+            document.getElementById("" + drow + i).classList.add("winning-bounce")
+
+        }, 1800);
+    }       
+}

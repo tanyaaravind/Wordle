@@ -203,6 +203,3 @@ body{
 .tile-flip:nth-child(3) { animation-delay: .6s }
 .tile-flip:nth-child(4) { animation-delay: .9s }
 .tile-flip:nth-child(5) { animation-delay: 1.2s }
-
-
-

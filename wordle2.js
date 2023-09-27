@@ -159,7 +159,7 @@ function updateBoard(letter)
                 document.getElementById(currIndex).classList.add("winning-bounce");
 
             }
-            endGame()
+            endGameWin()
             
         }
         else
@@ -197,13 +197,19 @@ function updateBoard(letter)
                 }
                 col++;
             }
+
+            if(row == 5)
+            {
+                endGameLoss()
+            }
+            
         }
         
 
         for(let i = 0; i <= 4; i++)
         {
             document.getElementById("" + row + i).classList.add("tile-flip")
-            delay(row, i);  
+            delay(row, i);
         }
         
     }
@@ -228,11 +234,17 @@ function updateBoard(letter)
 
 
 
-function endGame()
+function endGameWin()
 {
     document.removeEventListener('keydown', handleGame)
     finalBounce(row)
 
+}
+
+function endGameLoss()
+{
+    document.removeEventListener('keydown', handleGame)
+    setTimeout(function() {alert('Oh noes! Word was: ' + guessWord[0]);},1700)
 }
 
 function animatePop(ind, isAdd)

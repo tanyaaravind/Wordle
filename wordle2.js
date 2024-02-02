@@ -1,6 +1,8 @@
 
+//word
 var guessWord
 
+//fetching a 5 letter word from API
 function getWord ()
 {
     fetch('https://random-word-api.herokuapp.com/word?length=5')
@@ -14,7 +16,7 @@ function getWord ()
         wordExists(guessWord)
     });
 
-
+//checking if the word exists in a separate API dictionary (some words are weird), if not keep searching for words until one is found
     function wordExists(word)
     {
 
@@ -35,12 +37,14 @@ function getWord ()
 
 
 
-
+//calling method to get a valid word
 getWord()
 
 
 const squares = document.querySelectorAll('.square');
+const keys = document.querySelectorAll('.key');
 
+//making the board
 const board = 
 [['', '', '', '', ''],
 ['', '', '', '', ''],
@@ -49,17 +53,20 @@ const board =
 ['', '', '', '', ''],
 ['', '', '', '', '']];
 
-const alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l",
-                "m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+const alphabet = ["q","w","e","r","t","y","u","i","o","p","a","s",
+                "d","f","g","h","j","k","l","Enter","z","x","c","v","b","n","m","Backspace"];
 
+var keyClick;
 var key;
 let row = 0
 let col = 0
 
+//current guess of the user
 let currGuess = ""
 
 let currIndex;
 
+//to determind the color of each square
 const colorArr =
 [['', '', '', '', ''],
 ['', '', '', '', ''],
@@ -68,7 +75,44 @@ const colorArr =
 ['', '', '', '', ''],
 ['', '', '', '', '']];
 
+var rowOne = document.getElementById("1row");
+var rowTwo = document.getElementById("2row");
+var rowThree = document.getElementById("3row");
+
+function makeKeyBoard()
+{
+    alphabet.forEach((element) => 
+    {
+        var newKey = document.createElement("div");
+        newKey.textContent = element;
+        newKey.className = "key";
+        newKey.id = element;
+        newKey.addEventListener('click', handleClick);
+
+        
+        if(alphabet.indexOf(element) <=9) {
+            rowOne.appendChild(newKey);
+        }
+        else if(alphabet.indexOf(element) >= 10 && alphabet.indexOf(element) <= 18) {
+            rowTwo.appendChild(newKey);
+        }
+        else {
+            rowThree.appendChild(newKey);
+        }
+
+    })
+
+}
+
+makeKeyBoard();
+
+function handleClick(event) {
+    var clickedKey = event.target.textContent;
+    updateBoard(clickedKey);
+}
+
 document.addEventListener('keydown', handleGame)
+
 
 function handleGame(event)
 {
@@ -117,7 +161,7 @@ function updateBoard(letter)
     }
     
     else{
-        if(alphabet.includes(letter)){
+        if(alphabet.includes(letter) && letter != "Enter" && letter != "Backspace"){
             board[row][col] = letter;
             currIndex = "" + row + col;
 
@@ -171,8 +215,7 @@ function updateBoard(letter)
                 if(wordArr.includes(item))
                 {
                     if(wordArr[col] == guessArr[col])
-                    {
-                        // document.getElementById(currIndex).style.backgroundColor = "DarkGreen";
+                    { 
                         colorArr[row][col] = "gr"
                         wordArr[col] = "0"
                         guessArr[col] = "1"
@@ -190,7 +233,6 @@ function updateBoard(letter)
                 currIndex = "" + row + col;
                 if(wordArr.includes(item))
                 {
-                    // document.getElementById(currIndex).style.backgroundColor = "GoldenRod";
                     colorArr[row][col] = "ye"
                     wordArr[wordArr.indexOf(item)] = "0"
 
@@ -211,8 +253,46 @@ function updateBoard(letter)
             document.getElementById("" + row + i).classList.add("tile-flip")
             delay(row, i);
         }
+
+        setTimeout(() => {
+            for(let i = 0; i <= 4; i++)
+            {
+                if(colorArr[row][i] == "gr") {
+                    document.getElementById(board[row][i]).style.backgroundColor = "DarkGreen";
+                }
+                else if(colorArr[row][i] == "ye") {
+                    document.getElementById(board[row][i]).style.backgroundColor = "GoldenRod";
+                }
+            }
+        }, 2000)
+        
+        
+        
+
         
     }
+
+    function delay(drow, i) {
+        var item = colorArr[drow][i];
+        setTimeout(() => {
+            if (item === 'gr') {
+                currIndex = "" + drow + i;
+                
+                document.getElementById(currIndex).style.backgroundColor = "DarkGreen";
+                document.getElementById(currIndex).style.borderColor = "DarkGreen";
+                
+            }
+            else if (item === 'ye') {
+                currIndex = "" + drow + i;
+                document.getElementById(currIndex).style.backgroundColor = "GoldenRod";
+                document.getElementById(currIndex).style.borderColor = "GoldenRod";
+            }
+        }, 250 + 300 * i);
+
+    }
+}
+
+/*
 
     function delay(drow, i) {
         setTimeout(() => {
@@ -220,17 +300,22 @@ function updateBoard(letter)
             if (item === 'gr') {
                 currIndex = "" + drow + i;
                 document.getElementById(currIndex).style.backgroundColor = "DarkGreen";
-                document.getElementById(currIndex).style.borderColor = "DarkGreen"
+                document.getElementById(currIndex).style.borderColor = "DarkGreen";
+                document.getElementById(board[drow][i]).style.backgroundColor = "DarkGreen";
+                
             }
             else if (item === 'ye') {
                 currIndex = "" + drow + i;
                 document.getElementById(currIndex).style.backgroundColor = "GoldenRod";
-                document.getElementById(currIndex).style.borderColor = "GoldenRod"
+                document.getElementById(currIndex).style.borderColor = "GoldenRod";
+                document.getElementById(board[drow][i]).style.backgroundColor = "GoldenRod";
             }
         }, 250 + 300 * i);
     }
 }
 
+
+*/
 
 
 

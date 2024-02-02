@@ -11,7 +11,7 @@ body{
 
 .game-container
 {
-    height: 100vh;
+    height: 75vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -23,6 +23,7 @@ body{
     justify-content: center;
     border-bottom: 1px solid;
     border-bottom-color:rgb(116, 116, 116);
+    height: 70px;
 }
 
 
@@ -31,26 +32,26 @@ body{
     display: inline;
     font-size: 20px;
     justify-content: center;
-    padding-bottom: 5px;
-    padding-top: 5px;
+    line-height: 10px;
 
 }
 
 .board-container
 {
     display: inline-grid;
-    grid-template-rows: 65px 65px 65px 65px 65px 65px;
+    grid-template-rows: 50px 50px 50px 50px 50px 50px;
     grid-gap: 6px;
-    padding-top: 60px;
+    padding-top: 20px;
     justify-content: center;
+    padding-bottom: 30px;
 
 }
 
 .row0
 {
     display: inline-grid;
-    grid-template-columns: 65px 65px 65px 65px 65px;
-    grid-template-rows: 65px 65px 65px 65px 65px 65px;
+    grid-template-columns: 50px 50px 50px 50px 50px;
+    grid-template-rows: 50px 50px 50px 50px 50px 50px;
     grid-gap: 6px;
     padding: 20px;
     backface-visibility: hidden;
@@ -59,8 +60,8 @@ body{
 .row1
 {
     display: inline-grid;
-    grid-template-columns: 65px 65px 65px 65px 65px;
-    grid-template-rows: 65px 65px 65px 65px 65px 65px;
+    grid-template-columns: 50px 50px 50px 50px 50px;
+    grid-template-rows: 50px 50px 50px 50px 50px 50px;
     grid-gap: 6px;
     padding: 20px;
     backface-visibility: hidden;
@@ -69,8 +70,8 @@ body{
 .row2
 {
     display: inline-grid;
-    grid-template-columns: 65px 65px 65px 65px 65px;
-    grid-template-rows: 65px 65px 65px 65px 65px 65px;
+    grid-template-columns: 50px 50px 50px 50px 50px;
+    grid-template-rows: 50px 50px 50px 50px 50px 50px;
     grid-gap: 6px;
     padding: 20px;
     backface-visibility: hidden;
@@ -79,8 +80,8 @@ body{
 .row3
 {
     display: inline-grid;
-    grid-template-columns: 65px 65px 65px 65px 65px;
-    grid-template-rows: 65px 65px 65px 65px 65px 65px;
+    grid-template-columns: 50px 50px 50px 50px 50px;
+    grid-template-rows: 50px 50px 50px 50px 50px 50px;
     grid-gap: 6px;
     padding: 20px;
     backface-visibility: hidden;
@@ -89,8 +90,8 @@ body{
 .row4
 {
     display: inline-grid;
-    grid-template-columns: 65px 65px 65px 65px 65px;
-    grid-template-rows: 65px 65px 65px 65px 65px 65px;
+    grid-template-columns: 50px 50px 50px 50px 50px;
+    grid-template-rows: 50px 50px 50px 50px 50px 50px;
     grid-gap: 6px;
     padding: 20px;
     backface-visibility: hidden;
@@ -99,22 +100,73 @@ body{
 .row5
 {
     display: inline-grid;
-    grid-template-columns: 65px 65px 65px 65px 65px;
-    grid-template-rows: 65px 65px 65px 65px 65px 65px;
+    grid-template-columns: 50px 50px 50px 50px 50px;
+    grid-template-rows: 50px 50px 50px 50px 50px 50px;
     grid-gap: 6px;
     padding: 20px;
     backface-visibility: hidden;
 }
+
 
 .square
 {
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     text-transform: uppercase;
     font-weight: 800;
-    font-size: 27px;
+    font-size: 20px;
     text-align: center;
-    line-height: 57px;
+    line-height: 49px;
     border: 2px solid rgb(116, 116, 116);
+}
+
+.keyBoard-container
+{
+    display: inline-grid;
+    justify-content: center;
+    
+}
+
+.rowOne
+{
+    display: inline-grid;
+    grid-template-columns: 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px;
+    grid-gap: 5px;
+    padding-top: 25px;
+    padding-left: 30px;
+
+}
+
+.rowTwo
+{
+    display: inline-grid;
+    grid-template-columns: 40px 40px 40px 40px 40px 40px 40px 40px 40px;
+    grid-gap: 5px;
+    padding-top: 5px;
+    padding-left: 50px;
+
+}
+
+.rowThree
+{
+    display: inline-grid;
+    grid-template-columns: 90px 40px 40px 40px 40px 40px 40px 40px 80px;
+    grid-gap: 5px;
+    padding-top: 5px;
+    padding-left: 0px;
+
+}
+
+.key
+{
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 15px;
+    text-align: center;
+    line-height: 49px;
+    background-color: rgb(48, 48, 48);
+    border-radius: 5px;
+
 }
 
 

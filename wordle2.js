@@ -263,6 +263,9 @@ function updateBoard(letter)
                 else if(colorArr[row][i] == "ye") {
                     document.getElementById(board[row][i]).style.backgroundColor = "GoldenRod";
                 }
+                else {
+                    document.getElementById(board[row][i]).style.backgroundColor = "Gray";
+                }
             }
         }, 2000)
         
@@ -291,32 +294,6 @@ function updateBoard(letter)
 
     }
 }
-
-/*
-
-    function delay(drow, i) {
-        setTimeout(() => {
-            var item = colorArr[drow][i];
-            if (item === 'gr') {
-                currIndex = "" + drow + i;
-                document.getElementById(currIndex).style.backgroundColor = "DarkGreen";
-                document.getElementById(currIndex).style.borderColor = "DarkGreen";
-                document.getElementById(board[drow][i]).style.backgroundColor = "DarkGreen";
-                
-            }
-            else if (item === 'ye') {
-                currIndex = "" + drow + i;
-                document.getElementById(currIndex).style.backgroundColor = "GoldenRod";
-                document.getElementById(currIndex).style.borderColor = "GoldenRod";
-                document.getElementById(board[drow][i]).style.backgroundColor = "GoldenRod";
-            }
-        }, 250 + 300 * i);
-    }
-}
-
-
-*/
-
 
 
 function endGameWin()
